@@ -1,0 +1,219 @@
+/* ======================================================================
+   Modern UI Variables (inspired by Linear/Vercel/Tailwind Pro themes)
+====================================================================== */
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --border-dark: #cbd5e1;
+  --text: #334155;
+  --text-light: #64748b;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --radius: 0.65rem;
+
+  --transition: 180ms ease;
+  --transition-fast: 120ms ease-out;
+
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ======================================================================
+   Base Layout
+====================================================================== */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ======================================================================
+   Input styling
+====================================================================== */
+
+#file-input {
+  appearance: none;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+#file-input:hover {
+  border-color: var(--border-dark);
+  background: var(--surface-alt);
+}
+
+#status {
+  margin: 1rem 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ======================================================================
+   Table Container (Responsive smart scrolling)
+====================================================================== */
+
+#table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 1rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(2px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: var(--transition-fast);
+}
+
+/* Scrollbar modern */
+#table-container::-webkit-scrollbar {
+  height: 8px;
+}
+#table-container::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 10px;
+}
+#table-container::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ======================================================================
+   Table Styling — Senior Level
+====================================================================== */
+.csv-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Sticky header for responsiveness */
+.csv-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface-alt);
+  backdrop-filter: blur(4px);
+}
+
+/* Table Header */
+.csv-table th {
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.csv-table th:hover {
+  background: var(--border);
+}
+
+.csv-table th.sorted {
+  color: var(--primary);
+  background: #eef2ff;
+  box-shadow: inset 0 -2px 0 var(--primary);
+}
+
+/* Table Cells */
+.csv-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: var(--transition-fast);
+}
+
+/* Row hover animation */
+.csv-table tbody tr {
+  transition: background var(--transition-fast);
+}
+.csv-table tbody tr:hover {
+  background: var(--surface-alt);
+}
+
+/* Fade-in for new data */
+.csv-table tbody tr {
+  animation: fadeRow 0.25s ease;
+}
+
+/* ======================================================================
+   Sorting Indicators – aligned, modern
+====================================================================== */
+
+.csv-table th {
+  padding-right: 1.8rem;
+}
+
+.csv-table th::after {
+  content: "";
+  position: absolute;
+  right: 0.6rem;
+  opacity: 0;
+  font-size: 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.csv-table th.sorted::after {
+  opacity: 1;
+}
+
+.csv-table th.sorted:contains("↑")::after {
+  content: "↑";
+}
+
+.csv-table th.sorted:contains("↓")::after {
+  content: "↓";
+}
+
+/* ======================================================================
+   Animations
+====================================================================== */
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(3px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeRow {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
